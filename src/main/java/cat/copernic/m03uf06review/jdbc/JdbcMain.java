@@ -1,9 +1,9 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package cat.copernic.m03uf06review.jdbc;
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.Statement;
 
 /**
  * En aquesta secció cal accedir a una taula de MySQL amb un camp de cada tipus:
@@ -16,12 +16,36 @@ package cat.copernic.m03uf06review.jdbc;
  * @author pep
  */
 public class JdbcMain {
-
-    /**
-     * @param args the command line arguments
-     */
     public static void main(String[] args) {
-        // TODO code application logic here
+        String MySQLURL = "jdbc:mysql://localhost/javafx";
+        String databseUserName = "root";
+        String databasePassword = "";
+        Connection con = null;
+        try {
+            con = DriverManager.getConnection(MySQLURL, databseUserName, databasePassword);
+            if (con != null) {
+                //System.out.println("Database connection is successful !!!!");
+                Statement stmt = con.createStatement();
+                String query = "select * from tabla_ej1;";
+                ResultSet rs = stmt.executeQuery(query);
+
+                while (rs.next()) {
+                    System.out.println(
+                    rs.getInt("CampoINT") 
+                    +"||"+ rs.getDouble("CampoDOUBLE")
+                    +"||"+ rs.getString("CampoCHAR")
+                    +"||"+ rs.getString("CampoString")
+                    +"||"+ rs.getDate("CampoDATE")
+                    +"||"+ rs.getBoolean("CampoBOOLEAN"));
+
+
+            }
+        }
+    }
+    catch (Exception e
+        ) {
+            e.printStackTrace();
+    }
     }
     
 }

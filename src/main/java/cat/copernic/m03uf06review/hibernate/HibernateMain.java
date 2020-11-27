@@ -20,9 +20,7 @@ package cat.copernic.m03uf06review.hibernate;
  */
 public class HibernateMain {
 
-    /**
-     * @param args the command line arguments
-     */
+
     public static void main(String[] args) {
         // TODO code application logic here
     }
