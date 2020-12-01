@@ -26,17 +26,15 @@ public class JdbcMain {
             if (con != null) {
                 //System.out.println("Database connection is successful !!!!");
                 Statement stmt = con.createStatement();
-                String query = "select * from tabla_ej1;";
+                String query = "select * from kantaicollec;";
                 ResultSet rs = stmt.executeQuery(query);
 
                 while (rs.next()) {
                     System.out.println(
-                    rs.getInt("CampoINT") 
-                    +"||"+ rs.getDouble("CampoDOUBLE")
-                    +"||"+ rs.getString("CampoCHAR")
-                    +"||"+ rs.getString("CampoString")
-                    +"||"+ rs.getDate("CampoDATE")
-                    +"||"+ rs.getBoolean("CampoBOOLEAN"));
+                    rs.getInt("id") 
+                    +"||"+ rs.getString("NombreChicaBarco")
+                    +"||"+ rs.getString("Municion")
+                    +"||"+ rs.getInt("Veocidad"));
 
 
             }
