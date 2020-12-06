@@ -1,0 +1,19 @@
+<?xml version = "1.0" encoding = "utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+"-//Hibernate/Hibernate Mapping DTD//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd"> 
+
+<hibernate-mapping>
+   <class name = "cat.copernic.m03uf06review.hibernateMain.Registre" table = "tabla_ej2">
+      
+      <id name = "id" type = "int" column = "idPersona">
+         <generator class="native"/>
+      </id>
+      
+      <property name = "Nombre" column = "Nombre" type = "string"/>
+      <property name = "Fecha_de_nacimiento" column = "Fecha_de_nacimiento" type = "date"/>
+      <property name = "Peso" column = "Peso" type = "double"/>
+      <property name = "LetraFavorita" column = "LetraFavorita" type = "string"/>
+      
+   </class>
+</hibernate-mapping>
