@@ -19,8 +19,8 @@ public class Registre {
     private String LetraFavorita;
 
     public Registre() {}
-    public Registre(String Nombre, Date Fecha_de_nacimiento, Double Peso, String LetraFavorita) {
-        //this.id = id;
+    public Registre(Integer id, String Nombre, Date Fecha_de_nacimiento, Double Peso, String LetraFavorita) {
+        this.id = id;
         this.Nombre = Nombre;
         this.Fecha_de_nacimiento = Fecha_de_nacimiento;
         this.Peso = Peso;

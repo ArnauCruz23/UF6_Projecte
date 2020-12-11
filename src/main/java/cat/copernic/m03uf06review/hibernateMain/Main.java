@@ -31,10 +31,11 @@ public class Main {
 
     public static void main(String[] args) {
         
-        //insertar("Ramon", new java.sql.Date(2014 - 11 - 5), 46.5, "A");
-        //insertar("Juan", new java.sql.Date(2017 - 11 - 5), 70.5, "B");
         
-        //editar(1, "Pedro", 50.5);
+        //insertar(null,"Ramon", new java.sql.Date(2014 - 11 - 5), 46.5, "A");
+        //insertar(null, "Juan", new java.sql.Date(2017 - 11 - 5), 70.5, "B");
+        //insertar(null,"Pedro", new java.sql.Date(2017 - 11 - 5), 70.5, "B");
+        //editar(new Registre(10, "Juan", new java.sql.Date(2017 - 11 - 5), 70.5, "B"));
         
         //borrarPersona(9);
         
@@ -51,7 +52,7 @@ public class Main {
         }
     }
     
-    public static Integer insertar(String Nombre, Date Fecha_de_nacimiento, Double Peso, String LetraFavorita ){
+    public static Integer insertar(Integer id, String Nombre, Date Fecha_de_nacimiento, Double Peso, String LetraFavorita ){
         
         iniciar();
         Session session = factory.openSession();
@@ -60,7 +61,7 @@ public class Main {
 
         try {
             tx = session.beginTransaction();
-            Registre persona = new Registre(Nombre, Fecha_de_nacimiento, Peso, LetraFavorita);
+            Registre persona = new Registre(id, Nombre, Fecha_de_nacimiento, Peso, LetraFavorita);
             idP = (Integer) session.save(persona);
             tx.commit();
         } catch (HibernateException e) {
@@ -94,16 +95,13 @@ public class Main {
         }
     }
     
-    public static void editar(Integer id, String nom, Double Peso) {
+    public static void editar(Registre persona) {
         iniciar();
         Session session = factory.openSession();
         Transaction tx = null;
 
         try {
             tx = session.beginTransaction();
-            Registre persona = (Registre) session.get(Registre.class, id);
-            persona.setNombre(nom);
-            persona.setPeso(Peso);
             session.update(persona);
             tx.commit();
         } catch (HibernateException e) {
