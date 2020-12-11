@@ -34,7 +34,7 @@ public class Main {
         
         //insertar(null,"Ramon", new java.sql.Date(2014 - 11 - 5), 46.5, "A");
         //insertar(null, "Juan", new java.sql.Date(2017 - 11 - 5), 70.5, "B");
-        //insertar(null,"Pedro", new java.sql.Date(2017 - 11 - 5), 70.5, "B");
+        //insertar(null,"Isma", new java.sql.Date(2017 - 11 - 5), 70.5, "B");
         //editar(new Registre(10, "Juan", new java.sql.Date(2017 - 11 - 5), 70.5, "B"));
         
         //borrarPersona(9);

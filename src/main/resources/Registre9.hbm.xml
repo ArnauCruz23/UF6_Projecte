@@ -1,0 +1,35 @@
+<?xml version = "1.0" encoding = "utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+"-//Hibernate/Hibernate Mapping DTD//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd"> 
+
+<hibernate-mapping>
+   <class name = "cat.copernic.m03uf06review.hibernate_relational.Barcos" table = "tabla_ej3">
+       
+      <id name = "id" type = "int" column = "id">
+         <generator class="native"/>
+      </id>
+      
+      <property name = "nombre" column = "Nombre" type = "string"/>
+      <property name = "peso" column = "Peso" type = "double"/>
+      <property name = "nArmas" column = "Numero_armas" type = "int"/>
+      
+      <set name = "barcosD" cascade="all">
+         <key column = "relacion"/>
+         <one-to-many class="cat.copernic.m03uf06review.hibernate_relational.Barcos_descripcion"/>
+      </set>
+      
+      
+   </class>
+
+   <class name = "cat.copernic.m03uf06review.hibernate_relational.Barcos_descripcion" table = "tabla_ej3_relacional">
+      
+      <id name = "id" type = "int" column = "id">
+         <generator class="native"/>
+      </id>
+      
+      <property name = "carga" column = "Carga" type = "string"/>
+      
+   </class>
+
+</hibernate-mapping>
