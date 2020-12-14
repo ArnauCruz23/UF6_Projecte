@@ -24,13 +24,19 @@ import java.sql.SQLException;
 public class OrmMain {
     
     public static void main(String[] args) throws SQLException {
+        
+        llenarArrayYMostrar();
+        //System.out.println(t);
+    }
+   
+    public static void llenarArrayYMostrar() throws SQLException {
+  
         List<Registre> t = new ArrayList<>();
         
         Conexion c = new Conexion();
         Connection con = c.conectar();
         
         if (con != null) {
-            //System.out.println("Database connection is successful !!!!");
             Statement stmt = con.createStatement();
             String query = "select * from kantaicollec;";
             ResultSet rs = stmt.executeQuery(query);
@@ -43,10 +49,8 @@ public class OrmMain {
                         rs.getInt("Veocidad")));  
                 }
             }
-            
         System.out.println(t);
     }
-   
     }
     
     
