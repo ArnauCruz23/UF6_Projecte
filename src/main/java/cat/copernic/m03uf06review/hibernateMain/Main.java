@@ -32,9 +32,7 @@ public class Main {
     public static void main(String[] args) {
         
         
-        //insertar(null,"Ramon", new java.sql.Date(2014 - 11 - 5), 46.5, "A");
-        //insertar(null, "Juan", new java.sql.Date(2017 - 11 - 5), 70.5, "B");
-        //insertar(null,"Isma", new java.sql.Date(2017 - 11 - 5), 70.5, "B");
+        insertar(new Registre(null,"Ramon", new java.sql.Date(2014 - 11 - 5), 46.5, "A"));
         //editar(new Registre(10, "Juan", new java.sql.Date(2017 - 11 - 5), 70.5, "B"));
         
         //borrarPersona(9);
@@ -52,7 +50,7 @@ public class Main {
         }
     }
     
-    public static Integer insertar(Integer id, String Nombre, Date Fecha_de_nacimiento, Double Peso, String LetraFavorita ){
+    public static Integer insertar(Registre r){
         
         iniciar();
         Session session = factory.openSession();
@@ -61,7 +59,7 @@ public class Main {
 
         try {
             tx = session.beginTransaction();
-            Registre persona = new Registre(id, Nombre, Fecha_de_nacimiento, Peso, LetraFavorita);
+            Registre persona = r;
             idP = (Integer) session.save(persona);
             tx.commit();
         } catch (HibernateException e) {
