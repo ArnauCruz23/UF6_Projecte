@@ -43,15 +43,20 @@ public class HibernateRelationalMain {
       HashSet set2 = new HashSet();
       set2.add(new Barcos_descripcion(null, "Penetrantes"));
       set2.add(new Barcos_descripcion(null, "Antiaereos"));
+      
+      HashSet set3 = new HashSet();
+      set3.add(new Barcos_descripcion(null, "Minas"));
+      addBarco(new Barcos(null, "Francesc", 5000.60, 3000), set3);
+      listar();
       /*
       addBarco(null, "Hood", 5000.60, 3000, set2);
 
       listar();
       */
       
-      set1.add(new Barcos_descripcion(null, "Minas"));
+      /*set1.add(new Barcos_descripcion(null, "Minas"));
       update(new Barcos(7, "Bismark SS", 5000.0, 5000), set1);
-      listar();
+      listar();*/
       
       
       
@@ -71,7 +76,7 @@ public class HibernateRelationalMain {
         }
     }
    
-   public static Integer addBarco(Integer id, String nombre, Double peso, int armas, Set mun){
+   public static Integer addBarco(Barcos barco, Set mun){
        
       iniciar();
       Session session = factory.openSession();
@@ -80,9 +85,9 @@ public class HibernateRelationalMain {
       
       try {
          tx = session.beginTransaction();
-         Barcos barco = new Barcos(id, nombre, peso, armas);
-         barco.setBarcosD(mun);
-         BarcoID = (Integer) session.save(barco); 
+         Barcos b = barco;
+         b.setBarcosD(mun);
+         BarcoID = (Integer) session.save(b); 
          tx.commit();
       } catch (HibernateException e) {
          if (tx!=null) tx.rollback();
